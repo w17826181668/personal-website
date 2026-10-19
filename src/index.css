@@ -1,0 +1,223 @@
+/* ============================================================
+   吴爽 · 运营求职作品集 — 全局样式与设计令牌
+   橙色海报拼贴风 / 粗黑标题 / 硬朗描边 + 偏移投影 / 撞色蓝红
+   ============================================================ */
+
+:root {
+  /* —— 色彩 —— */
+  --orange:      #f04e23;   /* 主背景：海报橙 */
+  --orange-deep: #cf3a10;   /* 深橙（hover / 卡片变体） */
+  --orange-ink:  #d63d10;   /* 浅底上的橙色文字 */
+  --paper:       #f4efe4;   /* 奶油纸色（浅色区背景） */
+  --paper-2:     #ece5d4;
+  --black:       #161311;   /* 海报黑（深色区背景） */
+  --blue:        #2b3fe0;   /* 撞色蓝 */
+  --red:         #c7331f;   /* 撞色红 */
+
+  --ink:       #1b1611;     /* 浅底主文字 */
+  --ink-soft:  #5d554a;     /* 浅底次文字 */
+  --ink-faint: #8d8375;     /* 浅底弱文字 */
+  --w-ink:     #f7f2e8;     /* 深底主文字 */
+  --w-soft:    #b7ad9e;     /* 深底次文字 */
+  --w-faint:   #7d7468;     /* 深底弱文字 */
+
+  --line:   rgba(27, 22, 17, 0.14);
+  --line-2: rgba(27, 22, 17, 0.32);
+  --line-w:   rgba(247, 242, 232, 0.16);
+  --line-w-2: rgba(247, 242, 232, 0.4);
+
+  /* 海报描边 + 硬偏移投影 */
+  --bd: 1.5px solid var(--ink);
+  --pop: 6px 6px 0 var(--ink);
+  --pop-lg: 10px 10px 0 var(--ink);
+  --pop-w: 6px 6px 0 rgba(247, 242, 232, 0.92);
+
+  /* —— 字体 —— */
+  --display: "Archivo Black", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+          -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Cascadia Code", Consolas, "Courier New", monospace;
+
+  /* —— 尺寸 —— */
+  --container: 1700px;
+  --gutter: clamp(24px, 4vw, 72px);
+  --radius-xl: 18px;
+  --radius:   14px;
+  --radius-sm: 10px;
+
+  /* —— 动效 —— */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Reset ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--orange);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15.5px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+::selection { background: var(--ink); color: var(--orange); }
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 99px; border: 2px solid var(--paper); }
+
+/* 全局印刷颗粒 */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- 布局工具 ---------- */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.section { padding: clamp(96px, 11vw, 168px) 0; position: relative; }
+.section + .section { border-top: 1.5px solid var(--ink); }
+
+/* ---------- 微标签 ---------- */
+.micro {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+.section-label::before {
+  content: "";
+  width: 42px;
+  height: 3px;
+  background: var(--ink);
+}
+.section-label .no { color: var(--orange-ink); }
+
+/* ---------- 标题 ---------- */
+.h2 {
+  font-family: var(--display);
+  font-size: clamp(32px, 3.6vw, 56px);
+  font-weight: 900;
+  line-height: 1.22;
+  letter-spacing: 0.01em;
+}
+.h2 .grad { color: var(--orange-ink); }
+
+.lead { color: var(--ink-soft); font-size: 16px; line-height: 1.95; }
+.lead strong { color: var(--ink); font-weight: 700; }
+
+/* ---------- 按钮 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 34px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: var(--bd);
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s, background 0.35s, color 0.35s;
+  will-change: transform;
+}
+.btn svg { transition: transform 0.35s var(--ease-out); }
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--pop);
+}
+.btn-primary:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.btn-primary:hover svg { transform: translateX(4px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 rgba(27, 22, 17, 0.35);
+}
+
+/* ---------- 海报卡 ---------- */
+.poster {
+  background: #fff;
+  border: var(--bd);
+  border-radius: var(--radius);
+  box-shadow: var(--pop);
+}
+
+/* ---------- 开场遮罩（Opening Veil） ---------- */
+.intro-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--orange);
+  display: grid;
+  place-items: center;
+  will-change: transform;
+}
+.intro-mark { text-align: center; color: var(--ink); }
+.intro-monogram {
+  display: block;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(72px, 13vw, 168px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  transform: skewX(-6deg);
+  text-shadow: 6px 6px 0 rgba(22, 19, 17, 0.22);
+}
+.intro-name {
+  display: block;
+  margin-top: 22px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  color: rgba(22, 19, 17, 0.72);
+}
+
+/* ---------- 分区锚点偏移 ---------- */
+#about, #projects, #advantages, #contact { scroll-margin-top: 84px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .intro-veil { display: none; }
+}

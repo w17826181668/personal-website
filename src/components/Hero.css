@@ -1,0 +1,259 @@
+/* ============ Hero 橙色拼贴首屏 ============ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--orange);
+}
+
+/* —— 拼贴海报卡 —— */
+.hero-collage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.c-card {
+  position: absolute;
+  border: var(--bd);
+  border-radius: var(--radius);
+  box-shadow: var(--pop);
+  overflow: hidden;
+  transform: rotate(var(--r));
+  animation: cardFloat var(--d, 9s) ease-in-out infinite alternate;
+  transition: box-shadow 0.45s var(--ease-out);
+}
+.c-card:hover {
+  transform: rotate(var(--r)) translate(-4px, -4px) scale(1.03);
+  box-shadow: 12px 12px 0 var(--ink);
+  z-index: 5;
+}
+
+@keyframes cardFloat {
+  from { margin-top: -5px; }
+  to { margin-top: 6px; }
+}
+
+/* 变体底色 */
+.c-white { background: #fff; color: var(--ink); }
+.c-black { background: var(--black); color: var(--w-ink); }
+.c-blue  { background: var(--blue);  color: #fff; }
+.c-red   { background: var(--red);   color: #fff; }
+.c-orange2 { background: var(--orange-deep); color: #fff; }
+
+/* —— photo 卡 —— */
+.c-photo { padding: 0; }
+.c-card-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  border-bottom: 1.5px solid currentColor;
+}
+.c-card-bar em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  opacity: 0.65;
+}
+.c-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 1.5px solid currentColor;
+}
+.c-black .c-dot, .c-blue .c-dot, .c-red .c-dot, .c-orange2 .c-dot {
+  background: #fff;
+}
+.c-photo-wrap {
+  aspect-ratio: 16 / 9.6;
+  overflow: hidden;
+  border-bottom: 1.5px solid currentColor;
+}
+.c-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.c-title {
+  display: block;
+  padding: 9px 13px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+/* —— word 卡 —— */
+.c-word {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.c-word b {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+.c-word span {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  opacity: 0.62;
+}
+
+/* —— stat 卡 —— */
+.c-stat {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.c-stat b {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.05;
+}
+.c-stat span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+/* —— 居中主内容 —— */
+.hero-center {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 150px var(--gutter) 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-kicker {
+  color: var(--ink);
+  opacity: 0.72;
+}
+
+.hero-title {
+  margin-top: 26px;
+  font-family: var(--display);
+  font-size: clamp(46px, 6.4vw, 96px);
+  font-weight: 900;
+  line-height: 1.14;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transform: skewX(-6deg);
+  display: flex;
+  flex-direction: column;
+  text-shadow: 5px 5px 0 rgba(22, 19, 17, 0.22);
+}
+.hero-title .line { display: block; overflow: hidden; padding-bottom: 0.05em; }
+.hero-title .line-inner { display: block; will-change: transform; }
+.hero-title .line:nth-child(2) { color: var(--black); }
+.hero-title .line:nth-child(2)::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 7px;
+  margin: 18px auto 0;
+  background: var(--black);
+}
+
+.hero-sub {
+  margin-top: 30px;
+  max-width: 620px;
+  color: rgba(22, 19, 17, 0.78);
+  font-size: 16px;
+  line-height: 2;
+  font-weight: 500;
+}
+
+/* —— 圆形入口按钮 —— */
+.hero-enter {
+  margin-top: 44px;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: var(--bd);
+  box-shadow: var(--pop);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--ink);
+  transition: transform 0.45s var(--ease-out), box-shadow 0.45s, background 0.35s, color 0.35s;
+}
+.enter-txt { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.enter-txt i { opacity: 0.6; font-size: 9px; letter-spacing: 0.34em; }
+.enter-txt b { font-size: 16px; font-weight: 900; letter-spacing: 0.1em; }
+.hero-enter svg { animation: nudge 1.8s ease-in-out infinite; }
+.hero-enter:hover {
+  transform: translate(-4px, -4px) rotate(-6deg);
+  box-shadow: 12px 12px 0 var(--ink);
+  background: var(--black);
+  color: var(--paper);
+}
+@keyframes nudge { 50% { transform: translateY(4px); } }
+
+/* —— 底部信息条 —— */
+.hero-foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 30px;
+}
+.hero-mail, .hero-phone {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.hero-foot .micro { color: rgba(22, 19, 17, 0.55); }
+.hero-mail b, .hero-phone b {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.hero-mail:hover b { text-decoration: underline; text-underline-offset: 4px; }
+.hero-caption { color: rgba(22, 19, 17, 0.66); }
+
+/* —— 小屏兜底：隐藏拼贴，回归居中排版 —— */
+@media (max-width: 1180px) {
+  .hero-collage { display: none; }
+  .hero-center { padding-top: 140px; }
+}
+@media (max-width: 900px) {
+  .hero-phone { display: none; }
+  .hero-foot { justify-content: center; text-align: center; }
+  .hero-mail { display: none; }
+  .hero-title { font-size: clamp(38px, 9.5vw, 64px); white-space: normal; }
+}

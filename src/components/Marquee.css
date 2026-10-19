@@ -1,0 +1,38 @@
+/* ============ 滚动字幕分隔带（海报黑条） ============ */
+.marquee {
+  overflow: hidden;
+  padding: 22px 0;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--black);
+  color: var(--paper);
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  padding-right: 36px;
+  font-family: var(--display);
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.marquee-item:nth-child(odd) { color: var(--orange); }
+.marquee-item:nth-child(even) { color: var(--paper); }
+.marquee-item i {
+  font-style: normal;
+  color: var(--paper);
+  font-size: 13px;
+}
+
+@keyframes marquee { to { transform: translateX(-50%); } }

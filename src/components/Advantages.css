@@ -1,0 +1,75 @@
+/* ============ 个人优势（拼贴海报卡） ============ */
+.advantages { background: var(--paper); }
+
+.adv-head { max-width: 720px; margin-bottom: clamp(52px, 6vw, 84px); }
+.adv-head .h2 { margin-bottom: 22px; }
+
+.adv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.adv-card {
+  position: relative;
+  padding: 34px 30px 32px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+  color: var(--ink);
+  border: var(--bd);
+  box-shadow: var(--pop);
+  transition: transform 0.45s var(--ease-out), box-shadow 0.45s;
+}
+.adv-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 11px 11px 0 var(--ink);
+}
+
+/* 变体色卡 */
+.adv-card:nth-child(2) { background: var(--black); color: var(--w-ink); border-color: var(--black); box-shadow: 6px 6px 0 var(--orange); }
+.adv-card:nth-child(2):hover { box-shadow: 11px 11px 0 var(--orange); }
+.adv-card:nth-child(5) { background: var(--blue); color: #fff; border-color: var(--blue); box-shadow: 6px 6px 0 var(--ink); }
+.adv-card:nth-child(5):hover { box-shadow: 11px 11px 0 var(--ink); }
+
+.adv-no {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  color: var(--orange-ink);
+}
+.adv-card:nth-child(2) .adv-no { color: var(--orange); }
+.adv-card:nth-child(5) .adv-no { color: var(--paper); }
+
+.adv-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  color: var(--ink);
+  background: var(--orange);
+  border: var(--bd);
+  margin-bottom: 24px;
+  transition: transform 0.5s var(--ease-out);
+}
+.adv-card:hover .adv-icon { transform: translateY(-3px) rotate(-6deg); }
+.adv-card:nth-child(2) .adv-icon { background: var(--orange); color: var(--black); border-color: var(--orange); }
+.adv-card:nth-child(5) .adv-icon { background: var(--paper); color: var(--blue); border-color: var(--paper); }
+
+.adv-card h3 {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.adv-card p {
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.95;
+}
+.adv-card:nth-child(2) p { color: var(--w-soft); }
+.adv-card:nth-child(5) p { color: rgba(255, 255, 255, 0.82); }
+
+@media (max-width: 1024px) { .adv-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .adv-grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,149 @@
+/* ============ 个人经历（奶油纸色区） ============ */
+.about { background: var(--paper); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: clamp(48px, 6vw, 110px);
+  align-items: start;
+}
+
+/* —— 左列 —— */
+.about-side {
+  position: sticky;
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* —— 联系卡 —— */
+.contact-card { padding: 24px 26px; }
+.contact-card-title { margin-bottom: 16px; color: var(--orange-ink); }
+.contact-card ul { list-style: none; display: flex; flex-direction: column; }
+.contact-card li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1.5px dashed var(--line-2);
+  font-size: 14px;
+}
+.contact-card li:last-child { border-bottom: 0; }
+.contact-card li .micro { flex: none; }
+.contact-card li a, .contact-card li b {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: right;
+  transition: color 0.3s;
+}
+.contact-card li a:hover { color: var(--orange-ink); }
+
+/* —— 右列 —— */
+.about-main > .h2 { margin-bottom: 30px; }
+
+.about-paras { display: flex; flex-direction: column; gap: 18px; max-width: 760px; }
+
+/* —— 项目数据（海报小卡） —— */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 52px;
+}
+.stat {
+  position: relative;
+  padding: 24px 22px 20px;
+  border-radius: var(--radius);
+  background: #fff;
+  border: var(--bd);
+  box-shadow: var(--pop);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s;
+}
+.stat:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.stat:nth-child(2) { background: var(--orange); color: #fff; }
+.stat:nth-child(2) span { color: rgba(255, 255, 255, 0.85); }
+.stat:nth-child(4) { background: var(--blue); color: #fff; }
+.stat:nth-child(4) span { color: rgba(255, 255, 255, 0.85); }
+.stat b {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(30px, 2.6vw, 42px);
+  font-weight: 900;
+  line-height: 1.05;
+}
+.stat b i {
+  font-style: normal;
+  font-size: 0.55em;
+  color: var(--orange-ink);
+  margin-left: 2px;
+}
+.stat:nth-child(2) b i, .stat:nth-child(4) b i { color: var(--paper); }
+.stat span {
+  display: block;
+  margin-top: 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+}
+
+/* —— 时间线 —— */
+.timeline { margin-top: 56px; }
+.timeline-title { margin-bottom: 20px; color: var(--orange-ink); }
+.timeline ul { list-style: none; display: flex; flex-direction: column; }
+.timeline li {
+  display: grid;
+  grid-template-columns: 170px 14px 1fr;
+  align-items: center;
+  gap: 0 18px;
+  padding: 17px 0;
+  border-bottom: 1.5px solid var(--line);
+  transition: background 0.3s;
+}
+.timeline li:last-child { border-bottom: 0; }
+.timeline .period { color: var(--ink-faint); }
+.timeline .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 2px solid var(--ink);
+  justify-self: center;
+}
+.tl-body { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
+.tl-body b { font-size: 15px; font-weight: 700; }
+.tl-body em {
+  font-style: normal;
+  font-size: 11px;
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--orange);
+  border: var(--bd);
+}
+
+/* —— 响应式兜底 —— */
+@media (max-width: 1180px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-side { position: static; flex-direction: row; align-items: stretch; }
+  .contact-card { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+}
+@media (max-width: 900px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .about-side { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  .stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .timeline li { grid-template-columns: 1fr; gap: 8px; }
+  .timeline .dot { display: none; }
+}
