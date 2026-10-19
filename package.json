@@ -1,11 +1,14 @@
 {
   "name": "wushuang-portfolio",
+"os": ["linux", "win32", "darwin"],
+  "cpu": ["x64", "arm64"],
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:single": "vite build --mode single && node scripts/inline-media.cjs",
     "preview": "vite preview"
   },
   "dependencies": {
